@@ -128,6 +128,7 @@ class MainCategoriesController extends Controller
             $image = base_path('assets/' . $image);
             unlink($image); //delete from folder
 
+            $maincategory->categories()->delete();
             $maincategory->delete();
             return redirect()->route('admin.maincategories')->with(['success' => 'deleted with success']);
 
@@ -147,7 +148,7 @@ class MainCategoriesController extends Controller
 
             $maincategory -> update(['active' =>$status ]);
 
-            return redirect()->route('admin.maincategories')->with(['success' => 'Change statue with success ']);
+            return redirect()->route('admin.maincategories')->with(['success' => 'Change status with success ']);
 
         } catch (\Exception $ex) {
             return redirect()->route('admin.maincategories')->with(['error' => 'please retry later']);

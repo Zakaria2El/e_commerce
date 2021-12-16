@@ -79,6 +79,9 @@
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">Update</a>
                                                                 <a href="{{route('admin.vendors.delete',$vendor->id)}}"
                                                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">Delete</a>
+                                                                <a href="{{route('admin.vendors.active',$vendor->id)}}"
+                                                                   class="btn btn-outline-warning btn-min-width box-shadow-3 mr-1 mb-1">
+                                                                    @if($vendor->getActive()=='Active') {{$aa='deactivate'}}@else{{$aa='activate'}}@endif</a>
 
 
                                                             </div>

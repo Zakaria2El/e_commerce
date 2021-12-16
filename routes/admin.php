@@ -56,6 +56,8 @@ Route::group(['namespace'=>'Admin' ,'middleware'=>'auth:admin'],function (){
         Route::post('update/{id}','MainCategoriesController@update')->name('admin.maincategories.update');
         //Delete
         Route::get('delete/{id}','MainCategoriesController@delete')->name('admin.maincategories.delete');
+        Route::get('active/{id}','MainCategoriesController@changeStatus')->name('admin.maincategories.active');
+
 
 
     });
@@ -74,6 +76,7 @@ Route::group(['namespace'=>'Admin' ,'middleware'=>'auth:admin'],function (){
         Route::post('update/{id}','VendorsController@update')->name('admin.vendors.update');
         //Delete
         Route::get('delete/{id}','VendorsController@delete')->name('admin.vendors.delete');
+        Route::get('active/{id}','VendorsController@changeStatus')->name('admin.vendors.active');
 
 
     });

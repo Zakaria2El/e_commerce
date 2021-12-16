@@ -69,7 +69,7 @@
 
                                                         <td >{{$category->getActive()}}
                                                             @if($category->getActive()=='Active') <span class="badge badge badge-success badge-pill float-right mr-2" > | </span>
-                                                            @else($language->getActive()=='Inactive') <span  class="badge badge badge-danger badge-pill float-right mr-2"  > - </span>@endif</td>
+                                                            @else($language->getActive()=='Inactive')  <span  class="badge badge badge-danger badge-pill float-right mr-2"  > - </span>@endif</td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
@@ -77,6 +77,8 @@
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">Update</a>
                                                                 <a href="{{route('admin.maincategories.delete',$category->id)}}"
                                                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">Delete</a>
+                                                                <a href="{{route('admin.maincategories.active',$category->id)}}"
+                                                                   class="btn btn-outline-warning btn-min-width box-shadow-3 mr-1 mb-1">@if($category->getActive()=='Active') {{$aa='deactivate'}}@else{{$aa='activate'}}@endif</a>
 
 
                                                             </div>
