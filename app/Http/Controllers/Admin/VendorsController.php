@@ -10,6 +10,7 @@ use App\Notifications\VendorCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
 
 class VendorsController extends Controller
 {
@@ -123,5 +124,45 @@ class VendorsController extends Controller
         }
 
 
+    }
+
+    public function delete($id){
+        try {
+            $vendor = Vendor::find($id);
+            if (!$vendor)
+                return redirect()->route('admin.vendors')->with(['error' => 'this vendor not found']);
+
+
+
+            $image = Str::after($vendor->logo, 'assets/');
+            $image = public_path('assets/' . $image);
+            unlink($image); //delete from folder
+
+
+
+            $vendor->delete();
+            return redirect()->route('admin.vendors')->with(['success' => 'deleted with success']);
+
+        } catch (\Exception $ex) {
+            return redirect()->route('admin.vendors')->with(['error' => 'please retry later']);
+        }
+    }
+    public function changeStatus($id)
+    {
+        try {
+
+            $vendor = Vendor::find($id);
+            if (!$vendor)
+                return redirect()->route('admin.vendors')->with(['error' => 'this Main category not found ']);
+
+            $status =  $vendor -> active  == 0 ? 1 : 0;
+
+            $vendor -> update(['active' =>$status ]);
+
+            return redirect()->route('admin.vendors')->with(['success' => 'Change status with success ']);
+
+        } catch (\Exception $ex) {
+            return redirect()->route('admin.vendors')->with(['error' => 'please retry later']);
+        }
     }
 }

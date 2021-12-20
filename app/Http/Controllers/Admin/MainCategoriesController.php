@@ -125,7 +125,7 @@ class MainCategoriesController extends Controller
             }
 
             $image = Str::after($maincategory->photo, 'assets/');
-            $image = base_path('assets/' . $image);
+            $image = public_path('assets/' . $image);
             unlink($image); //delete from folder
 
             $maincategory->categories()->delete();

@@ -57,14 +57,13 @@ class MainCategory extends Model
 
 
 
-//
-//
-//    public  function subCategories(){
-//        return $this -> hasMany(SubCategory::class,'category_id','id');
-//    }
-//
-//
-//
+
+
+    public  function subCategories(){
+        return $this -> hasMany(SubCategory::class,'category_id','id');
+    }
+
+
     public function vendors(){
 
         return $this -> hasMany('App\Models\Vendor','category_id','id');

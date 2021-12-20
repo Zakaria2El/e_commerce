@@ -63,6 +63,26 @@ Route::group(['namespace'=>'Admin' ,'middleware'=>'auth:admin'],function (){
     });
 
     //*******************************************End Main categories Routes*******************************
+    //
+    //*******************************************Sub Categories Routes*******************************
+    Route::group(['prefix'=>'Subcategories'],function (){
+
+        Route::get('/', 'SubCategoriesController@index')->name('admin.subcategories');
+        //Create Routes
+        Route::get('create','SubCategoriesController@create')->name('admin.subcategories.create');
+        Route::post('save','SubCategoriesController@save')->name('admin.subcategories.save');
+        //Update Routes
+        Route::get('edit/{id}','SubCategoriesController@edit')->name('admin.subcategories.edit');
+        Route::post('update/{id}','SubCategoriesController@update')->name('admin.subcategories.update');
+        //Delete
+        Route::get('delete/{id}','SubCategoriesController@delete')->name('admin.subcategories.delete');
+        Route::get('active/{id}','SubCategoriesController@changeStatus')->name('admin.subcategories.active');
+
+
+
+    });
+
+    //*******************************************End Sub categories Routes*******************************
 
 //*******************************************Vendors Routes*******************************
     Route::group(['prefix'=>'vendors'],function (){
